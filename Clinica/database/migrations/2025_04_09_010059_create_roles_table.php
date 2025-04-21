@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // Ej: admin, medico, recepcionista
+            $table->string('name')->unique(); // Ej: admin, clinico, dentista
             $table->string('description')->nullable();
             $table->timestamps();
         });

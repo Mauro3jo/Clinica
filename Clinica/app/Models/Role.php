@@ -14,7 +14,6 @@ class Role extends Model
         'description',
     ];
 
-    // 🔁 Relación con doctores
     public function doctors()
     {
         return $this->belongsToMany(Doctor::class);

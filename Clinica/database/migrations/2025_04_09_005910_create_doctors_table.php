@@ -9,11 +9,10 @@ return new class extends Migration {
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('dni')->unique();
-            $table->string('username')->unique();
-            $table->string('password');
             $table->timestamps();
         });
     }

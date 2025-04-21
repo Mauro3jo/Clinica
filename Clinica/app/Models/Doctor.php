@@ -3,32 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable; // ← para login
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Authenticatable
+class Doctor extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
     protected $fillable = [
         'name',
         'email',
         'dni',
-        'username',
-        'password',
+        'user_id',
     ];
 
-    protected $hidden = [
-        'password',
-    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-    // 🔁 Relación con roles (muchos a muchos)
     public function roles()
     {
         return $this->belongsToMany(Role::class);
     }
 
-    // 🔁 Relación con tokens
     public function tokens()
     {
         return $this->hasMany(Token::class);

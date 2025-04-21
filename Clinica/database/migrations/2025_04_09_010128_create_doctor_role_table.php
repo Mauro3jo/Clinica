@@ -9,12 +9,9 @@ return new class extends Migration {
     {
         Schema::create('doctor_role', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('doctor_id');
-            $table->unsignedBigInteger('role_id');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
+            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
             $table->unique(['doctor_id', 'role_id']);
         });
@@ -25,4 +22,3 @@ return new class extends Migration {
         Schema::dropIfExists('doctor_role');
     }
 };
-

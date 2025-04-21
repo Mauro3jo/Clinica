@@ -9,12 +9,10 @@ return new class extends Migration {
     {
         Schema::create('tokens', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('doctor_id');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->string('token')->unique();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
-
-            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
         });
     }
 

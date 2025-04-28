@@ -10,12 +10,9 @@ class PatientController extends Controller
     // Trae todos los pacientes con relaciones
     public function index()
     {
-        // Trae todos los campos del modelo Patient, sin relaciones
         $patients = Patient::all();
-    
         return response()->json($patients);
     }
-    
 
     // Crear nuevo paciente
     public function store(Request $request)
@@ -25,14 +22,19 @@ class PatientController extends Controller
             'nombre' => 'required|string',
             'dni' => 'required|digits:8|unique:patients,dni',
             'sexo' => 'required|string|in:masculino,femenino,otro',
+            'edad' => 'nullable|integer',
             'fecha_nacimiento' => 'nullable|date',
             'obra_social' => 'nullable|string',
+            'codigo_obra_social' => 'nullable|string',
             'afiliado_nro' => 'nullable|string',
             'parentesco' => 'nullable|string',
             'titular' => 'nullable|string',
             'domicilio' => 'nullable|string',
+            'localidad' => 'nullable|string',
             'telefono' => 'nullable|string',
             'servicio' => 'nullable|string',
+            'fecha_primera_consulta' => 'nullable|date',
+            'observaciones' => 'nullable|string',
         ]);
 
         $patient = Patient::create($request->all());

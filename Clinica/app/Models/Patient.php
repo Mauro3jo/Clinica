@@ -14,14 +14,19 @@ class Patient extends Model
         'nombre',
         'dni',
         'sexo',
+        'edad',
         'fecha_nacimiento',
         'obra_social',
+        'codigo_obra_social',
         'afiliado_nro',
         'parentesco',
         'titular',
         'domicilio',
+        'localidad',
         'telefono',
         'servicio',
+        'fecha_primera_consulta',
+        'observaciones',
     ];
 
     public function historialClinico()

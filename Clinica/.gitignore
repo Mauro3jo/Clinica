@@ -1,23 +1,50 @@
-/.phpunit.cache
+# Laravel y Composer
+/vendor
+/storage/*
+!/storage/.gitignore
+/storage/*.key
+/storage/pail
+/storage/app/public
+/storage/debugbar
+/storage/framework
+/storage/logs
+
+# Node y frontend
 /node_modules
 /public/build
 /public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+
+# Configuración y archivos sensibles
 .env
-.env.backup
+.env.example
 .env.production
-.phpactor.json
+.env.produc
+.env.backup
+.env.*
+.phpunit.cache
 .phpunit.result.cache
+.phpactor.json
 Homestead.json
 Homestead.yaml
+auth.json
+
+# IDE/Editor settings
+/.idea
+/.vscode
+/.nova
+/.fleet
+/.zed
+
+# Logs y archivos temporales
 npm-debug.log
 yarn-error.log
-/auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
+.DS_Store
+Thumbs.db
+/.sass-cache
+/.tmp
+*.swp
+*.swo
+
+# Excluye public/storage excepto el .gitignore
+/public/storage/*
+!/public/storage/.gitignore

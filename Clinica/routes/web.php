@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AuthController,
@@ -7,6 +8,7 @@ use App\Http\Controllers\{
     HistorialClinicoController,
     PlanTratamientoController
 };
+use App\Http\Controllers\DemoLinkPagoController;
 
 // AUTENTICACIÓN
 Route::post('/register', [AuthController::class, 'register']);
@@ -32,7 +34,10 @@ Route::post('/historial', [HistorialClinicoController::class, 'storeOrUpdate']);
 Route::get('/patients/{id}/planes', [PlanTratamientoController::class, 'index']);
 Route::post('/planes', [PlanTratamientoController::class, 'store']);
 
-// SPA (Vue)
+// ---------- DEMO LINK DE PAGO ----------
+Route::post('/demo-link-pago', [DemoLinkPagoController::class, 'pagar']);
+
+// SPA (Vue) - fallback (¡SIEMPRE debe estar al final!)
 Route::get('/{any}', function () {
     return view('app');
 })->where('any', '.*');

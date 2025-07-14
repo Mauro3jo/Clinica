@@ -14,6 +14,9 @@ import PatientHistorial from './views/PatientHistorial.vue'
 import PatientPlanes from './views/PatientPlanes.vue'
 import CrearPaciente from './views/CrearPaciente.vue'
 
+// Vista demo de pago
+import DemoLinkPago from './views/DemoLinkPago.vue' // <-- AGREGADO
+
 const routes = [
   // Autenticación
   {
@@ -41,7 +44,7 @@ const routes = [
     component: CrearPaciente,
     meta: { requiresAuth: true }
   },
-  
+
   // Vistas del paciente (protegidas)
   {
     path: '/paciente/:id',
@@ -66,6 +69,14 @@ const routes = [
     name: 'paciente.planes',
     component: PatientPlanes,
     meta: { requiresAuth: true }
+  },
+
+  // ------------- NUEVA RUTA DEMO -------------
+  {
+    path: '/demo-link-pago',
+    name: 'demo-link-pago',
+    component: DemoLinkPago,
+    meta: { requiresAuth: true }  // Solo usuarios logueados pueden acceder
   }
 ]
 
@@ -77,7 +88,6 @@ const router = createRouter({
 // Protección de rutas
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
-
   if (to.meta.requiresAuth && !token) {
     next('/') // redirigir al login si no hay token
   } else {
